@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
-import {React, useState} from 'react'
+import React,  {useState} from 'react'
 import axios from 'axios'
 
 const user = {
@@ -37,13 +37,17 @@ function classNames(...classes) {
 function Dashboard(){
 
   const [citizen , setCitizen] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  React.useEffect(()=> {
-    axios.get(/*URL*/).then((response)=>{
+
+  React.useEffect(() => {
+    axios.get("http://localhost:8080/citizens").then((response) => {
       setCitizen(response.data);
-    })
-  }, [])
+    });
+  }, []);
 
+  if(citizen){
+    console.log(citizen)
 
     return(
         <div className="text-left">
@@ -189,59 +193,87 @@ function Dashboard(){
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Name
+                    Όνομα
                   </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Title
+                    Επώνυμο
                   </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Status
+                    Email
                   </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Role
+                    Τηλέφωνο
                   </th>
-                  <th scope="col" className="relative px-6 py-3">
-                    <span className="sr-only">Edit</span>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    ΑΦΜ
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Τόπος Γέννησης
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Ημερομηνία Γέννησης
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Σταρτιωτικός Αριθμός
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Αιτιολόγηση Αναβολής
                   </th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                {people.map((person) => (
-                  <tr key={person.email}>
+                {citizen.map((citizen) => (
+                  <tr key={citizen.email}>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="flex items-center">
-                        <div className="flex-shrink-0 h-10 w-10">
-                          <img className="h-10 w-10 rounded-full" src={person.image} alt="" />
-                        </div>
-                        <div className="ml-4">
-                          <div className="text-sm font-medium text-gray-900">{person.name}</div>
-                          <div className="text-sm text-gray-500">{person.email}</div>
-                        </div>
-                      </div>
+                          <h1>{citizen.firstName}</h1>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{person.title}</div>
-                      <div className="text-sm text-gray-500">{person.department}</div>
+                      <h1>{citizen.lastName}</h1>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                        Active
-                      </span>
+                      <h1>{citizen.email}</h1>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.role}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      <a href="#" className="text-indigo-600 hover:text-indigo-900">
-                        Edit
-                      </a>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <h1>{citizen.phoneNumber}</h1>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm">
+                      <h1>{citizen.afm}</h1>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <h1>{citizen.placeOfBirth}</h1>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <h1>{citizen.dateOfBirth}</h1>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <h1>{citizen.militaryNumber}</h1>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <h1>{citizen.reasonOfPostpone}</h1>
                     </td>
                   </tr>
                 ))}
@@ -337,7 +369,10 @@ function Dashboard(){
         </main>
       </div>
         </div>
-    );
+    );}else{
+      return (
+      <h1>LOading</h1> );
+    }
 }
 
 export default Dashboard;
