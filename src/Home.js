@@ -1,4 +1,5 @@
 import Navbar from './components/Navbar'
+import { Outlet, Link } from "react-router-dom"
 
 
 function Home(){
@@ -31,10 +32,10 @@ function Home(){
                   md:text-5xl
                   lg:text-6xl lg:max-w-7xl
                   text-white
-                "> Long headline to turn <br class="hidden lg:block" /> your visitors into users </h1>
+                "> Ηλεκτρονικό σύστημα <br class="hidden lg:block" /> αναβολών στράτευσης </h1>
                     <div class="flex w-full max-w-2xl gap-2 mx-auto mt-6">
                       <div class="mt-3 rounded-lg sm:mt-0">
-                        <button class="
+                        <Link to="/application"><button class="
                       items-center
                       block
                       px-5
@@ -54,7 +55,7 @@ function Home(){
                       focus:ring-2
                       focus:ring-offset-2
                       focus:ring-blue-500
-                    "> Get bundle </button>
+                    "> Κάνετε Αίτηση </button></Link>
                       </div>
                     </div>
                   </div>

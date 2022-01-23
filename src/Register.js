@@ -2,7 +2,7 @@ import Navbar from './components/Navbar'
 import axios from 'axios'
 import React ,{ useState} from 'react'
 
-function Login(){
+function Register(){
 
   
   
@@ -28,15 +28,67 @@ function Login(){
                 <div class="w-full max-w-xl mx-auto lg:w-96">
                   <div>
                     
-                    <h2 class="mt-6 text-3xl font-extrabold text-neutral-600"> Σύνδεση</h2>
+                    <h2 class="mt-6 text-3xl font-extrabold text-neutral-600"> Εγγραφή</h2>
                   </div>
                   <div class="mt-8">
                     <div class="mt-6">
                       <form action="http://localhost:8080/login" method="POST" class="space-y-6">
                         <div>
-                          <label for="email" class="block text-sm font-medium text-neutral-600"> Email </label>
+                          <label for="email" class="block text-sm font-medium text-neutral-600"> Όνομα </label>
                           <div class="mt-1">
                             <input id="email"  name="email" type="email" autocomplete="email" required="" placeholder="Email" class="
+                          block
+                          w-full
+                          px-5
+                          py-3
+                          text-base text-neutral-600
+                          placeholder-gray-300
+                          transition
+                          duration-500
+                          ease-in-out
+                          transform
+                          border border-transparent
+                          rounded-lg
+                          bg-gray-100
+                          focus:outline-none
+                          focus:border-transparent
+                          focus:ring-2
+                          focus:ring-white
+                          focus:ring-offset-2
+                          focus:ring-offset-gray-300
+                        " />
+                          </div>
+                        </div>
+                        <div class="space-y-1">
+                          <label for="password" class="block text-sm font-medium text-neutral-600"> Επώνυμο </label>
+                          <div class="mt-1">
+                            <input id="password"  name="password" type="password" autocomplete="current-password" required="" placeholder="Κωδικός" class="
+                          block
+                          w-full
+                          px-5
+                          py-3
+                          text-base text-neutral-600
+                          placeholder-gray-300
+                          transition
+                          duration-500
+                          ease-in-out
+                          transform
+                          border border-transparent
+                          rounded-lg
+                          bg-gray-100
+                          focus:outline-none
+                          focus:border-transparent
+                          focus:ring-2
+                          focus:ring-white
+                          focus:ring-offset-2
+                          focus:ring-offset-gray-300
+                        " />
+                          </div>
+                        </div>
+                        <div class="space-y-1">
+                          <label for="password" class="block text-sm font-medium text-neutral-600"> Email </label>
+                          <div class="mt-1">
+                            <input id="password"  name="password" type="password" autocomplete="current-password" required="" placeholder="Κωδικός" class="
                           block
                           w-full
                           px-5
@@ -85,20 +137,30 @@ function Login(){
                         " />
                           </div>
                         </div>
-                        <div class="flex items-center justify-between">
-                          <div class="flex items-center">
-                            <input id="remember-me" name="remember-me" type="checkbox" placeholder="Your password" class="
-                          w-4
-                          h-4
-                          text-blue-600
-                          border-gray-200
-                          rounded
-                          focus:ring-blue-500
+                        <div class="space-y-1">
+                          <label for="password" class="block text-sm font-medium text-neutral-600"> Επιβεβαίωση Κωδικός </label>
+                          <div class="mt-1">
+                            <input id="password"  name="password" type="password" autocomplete="current-password" required="" placeholder="Κωδικός" class="
+                          block
+                          w-full
+                          px-5
+                          py-3
+                          text-base text-neutral-600
+                          placeholder-gray-300
+                          transition
+                          duration-500
+                          ease-in-out
+                          transform
+                          border border-transparent
+                          rounded-lg
+                          bg-gray-100
+                          focus:outline-none
+                          focus:border-transparent
+                          focus:ring-2
+                          focus:ring-white
+                          focus:ring-offset-2
+                          focus:ring-offset-gray-300
                         " />
-                            <label for="remember-me" class="block ml-2 text-sm text-neutral-600"> Να με θυμάσαι </label>
-                          </div>
-                          <div class="text-sm">
-                            <a href="#" class="font-medium text-blue-600 hover:text-blue-500"> Ξεχάσατε τον κωδικό? </a>
                           </div>
                         </div>
                         <div>
@@ -123,7 +185,7 @@ function Login(){
                         focus:ring-2
                         focus:ring-offset-2
                         focus:ring-blue-500
-                      "> Σύνδεση </button>
+                      "> Εγγραφή </button>
                         </div>
                       </form>
                       <div class="relative my-4">
@@ -140,4 +202,4 @@ function Login(){
     )
 }
 
-export default Login;
+export default Register;
