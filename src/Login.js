@@ -32,11 +32,11 @@ function Login(){
                   </div>
                   <div class="mt-8">
                     <div class="mt-6">
-                      <form action="http://localhost:8080/login" method="POST" class="space-y-6">
+                      <form action="http://localhost:8080/citizens" method="POST" class="space-y-6">
                         <div>
                           <label for="email" class="block text-sm font-medium text-neutral-600"> Email </label>
                           <div class="mt-1">
-                            <input id="email"  name="email" type="email" autocomplete="email" required="" placeholder="Email" class="
+                            <input id="email"  name="username" type="text" autocomplete="email" required="" placeholder="Email" class="
                           block
                           w-full
                           px-5

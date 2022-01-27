@@ -1,6 +1,7 @@
 import Navbar from "./components/Navbar";
 import { useState } from "react";
 import { PaperClipIcon } from '@heroicons/react/solid'
+import axios from 'axios'
 
 function Application() {
   const [variables, setVariables] = useState({
@@ -19,6 +20,16 @@ function Application() {
   const changeHandler = (e) => {
     setVariables({ ...variables, [e.target.name]: e.target.value });
   };
+
+
+  function sentForm() {
+
+    console.log("Sent")
+    axios.get(`http://localhost:8080/citizens/new?firstName=${variables.firstName}&lastName=${variables.lastName}&email=${variables.email}&phoneNumber=${variables.phoneNumber}&afm=${variables.AFM}&placeOfBirth=${variables.placeOfBirth}&dateOfBirth=${variables.dateOfBirth}&militaryNumber=${variables.militaryNumber}&file=name.txt&reasonOfPostpone=Studies
+    `);
+
+  }
+
 
   
 
@@ -519,7 +530,7 @@ function Application() {
                   "> Επιστροφή </button>
                     </div>
                     <div class="mt-3 rounded-lg sm:mt-0 sm:ml-3">
-                    <button class="items-center block px-10 py-4 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-blue-600  rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"> Οριστική Υποβολή </button>
+                    <button onClick={sentForm} class="items-center block px-10 py-4 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-blue-600  rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"> Οριστική Υποβολή </button>
 
                     </div>
                   </div>
