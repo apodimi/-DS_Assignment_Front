@@ -24,7 +24,6 @@ function Application() {
 
   function sentForm() {
 
-    console.log("Sent")
     axios.get(`http://localhost:8080/citizens/new?firstName=${variables.firstName}&lastName=${variables.lastName}&email=${variables.email}&phoneNumber=${variables.phoneNumber}&afm=${variables.AFM}&placeOfBirth=${variables.placeOfBirth}&dateOfBirth=${variables.dateOfBirth}&militaryNumber=${variables.militaryNumber}&file=name.txt&reasonOfPostpone=Studies
     `);
 
