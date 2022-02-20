@@ -76,7 +76,7 @@ function DashboardUser() {
   }
 
   React.useEffect(() => {
-    axios.get("http://localhost:8080/citizens").then((response) => {
+    axios.get("http://localhost:8080/citizens/employee").then((response) => {
       setCitizen(response.data);
     });
   }, []);
