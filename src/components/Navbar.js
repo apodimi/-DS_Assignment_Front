@@ -61,9 +61,7 @@ function Navbar(params) {
                   Νέα Αίτηση
                 </a>
             </Link>
-            <a  className="text-base font-medium text-gray-500 hover:text-gray-900">
-              Αναζήτηση Αίτησης
-            </a>
+            
 
             
           </Popover.Group>

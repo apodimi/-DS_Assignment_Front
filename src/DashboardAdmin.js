@@ -10,6 +10,7 @@ function DashboardUser() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [openCitizen, setOpenCitizen] = useState(false);
   const [openAdmin, setOpenAdmin] = useState(false);
+  const [statusOfApplication, setStatusOfApplication] = useState(null);
 
   const cancelButtonRef = useRef(null);
   const [variables, setVariables] = useState({
@@ -101,7 +102,7 @@ function DashboardUser() {
   }
 
   function Accept(id) {
-    axios.get(`http://localhost:8080/citizen/accept?id=${id}`, {
+    axios.get(`http://localhost:8080/citizen/final-accept?id=${id}`, {
       headers: { Authorization: "***" },
     });
     window.location.reload(false);
@@ -118,6 +119,8 @@ function DashboardUser() {
       setUsers(response.data);
     });
   }, []);
+
+  
 
   if (citizen && users) {
     console.log(citizen);
@@ -178,7 +181,10 @@ function DashboardUser() {
                         </tr>
                       </thead>
                       <tbody className="bg-white divide-y divide-gray-200">
-                        {citizen.map((citizen, index) => (
+                        {citizen.map((citizen, index) => {
+                          if(citizen.progress === "KT"){
+                            return (
+                          
                           <tr key={citizen.email}>
                             <td className="px-6 py-4 whitespace-nowrap">
                               <h2>{citizen.firstName}</h2>
@@ -226,8 +232,8 @@ function DashboardUser() {
                                 </button>
                               </div>
                             </td>
-                          </tr>
-                        ))}
+                          </tr>)}
+  })}
                       </tbody>
                     </table>
                   </div>
@@ -651,6 +657,99 @@ function DashboardUser() {
               </Dialog>
             </Transition.Root>
 
+            {/* /End replace */}
+          </div>
+        </main>
+
+
+        <main>
+          <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+            {/* Replace with your content */}
+            <h1 className="text-3xl text-left my-10 font-bold text-gray-900">
+              Εγκεκριμένα Αίτηματα
+            </h1>
+
+            <div className="flex flex-col">
+              <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                  <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                    <table className="min-w-full divide-y divide-gray-200">
+                      <thead className="bg-gray-50">
+                        <tr>
+                          <th
+                            scope="col"
+                            className="px-6 py-3 text-left text-xs font-medium text-gray-500  tracking-wider"
+                          >
+                            Όνομα
+                          </th>
+                          <th
+                            scope="col"
+                            className="px-6 py-3 text-left text-xs font-medium text-gray-500  tracking-wider"
+                          >
+                            Επώνυμο
+                          </th>
+                          <th
+                            scope="col"
+                            className="px-6 py-3 text-left text-xs font-medium text-gray-500  tracking-wider"
+                          >
+                            Email
+                          </th>
+                          <th
+                            scope="col"
+                            className="px-6 py-3 text-left text-xs font-medium text-gray-500  tracking-wider"
+                          >
+                            Τηλέφωνο
+                          </th>
+                          <th
+                            scope="col"
+                            className="px-6 py-3 text-left text-xs font-medium text-gray-500  tracking-wider"
+                          >
+                            ΑΦΜ
+                          </th>
+                          <th
+                            scope="col"
+                            className="px-6 py-3 text-left text-xs font-medium text-gray-500  tracking-wider"
+                          >
+                            Κατάσταση
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody className="bg-white divide-y divide-gray-200">
+                        {citizen.map((citizen, index) => {
+                          if(citizen.progress === "A"){
+                            return (<tr key={citizen.email}>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                <h2>{citizen.firstName}</h2>
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                <h2>{citizen.lastName}</h2>
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                <h2>{citizen.email}</h2>
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <h2>{citizen.phoneNumber}</h2>
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap text-right text-sm">
+                                <h2>{citizen.afm}</h2>
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <div className="bg-green-100 py-2 px-4 rounded-full border-2 border-green-600">
+                                  <h2 className="text-green-600 font-bold">Εγκρίθηκε</h2>
+                                </div>
+                              </td>
+                            </tr>)
+                          }
+                          
+  })}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
             {/* /End replace */}
           </div>
         </main>
