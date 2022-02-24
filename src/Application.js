@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar";
 import { useState } from "react";
 import { PaperClipIcon } from '@heroicons/react/solid'
 import axios from 'axios'
+import { Outlet, Link } from "react-router-dom"
 
 function Application() {
   const [variables, setVariables] = useState({
@@ -507,7 +508,7 @@ function Application() {
     </div>
     <div class="mt-0 lg:mt-6 max-w-7xl sm:flex justify-end">
                     <div class="mt-3 rounded-lg sm:mt-0">
-                    <button class="
+                    <Link to="/"><button class="
                     items-center
                     block
                     px-10
@@ -526,7 +527,7 @@ function Application() {
                     focus:ring-2
                     focus:ring-offset-2
                     focus:ring-gray-500
-                  "> Επιστροφή </button>
+                  "> Επιστροφή </button></Link>
                     </div>
                     <div class="mt-3 rounded-lg sm:mt-0 sm:ml-3">
                     <button onClick={sentForm} class="items-center block px-10 py-4 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-blue-600  rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"> Οριστική Υποβολή </button>
